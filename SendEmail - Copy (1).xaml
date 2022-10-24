@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SendEmail" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="850.4,3132.8" sap2010:WorkflowViewState.IdRef="SendEmail_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:sri="clr-namespace:System.Runtime.InteropServices;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SendEmail" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1234.4,4147.2" sap2010:WorkflowViewState.IdRef="SendEmail_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:sri="clr-namespace:System.Runtime.InteropServices;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="40">
+    <scg:List x:TypeArguments="x:String" Capacity="47">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -41,10 +41,17 @@
       <x:String>UiPath.Mail.Activities</x:String>
       <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
       <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>BalaReva.EasyExcel.Utilities</x:String>
+      <x:String>BalaReva.EasyExcel.Sheets</x:String>
+      <x:String>BalaReva.EasyExcel.Base</x:String>
+      <x:String>BalaReva.EasyExcel.Main</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -79,9 +86,12 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyExcel.Utilities</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyExcel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="657.6,3068" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="1194.4,4082.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Atividade" />
       <Variable x:TypeArguments="x:String" Name="NumProcesso" />
@@ -92,13 +102,14 @@
       <Variable x:TypeArguments="x:String" Name="GrupoCota" />
       <Variable x:TypeArguments="x:String" Name="Situação" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Infos" />
+      <Variable x:TypeArguments="x:Boolean" Name="MovelComRegistro" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="C:\Users\andrade_cicero\OneDrive - Sicredi\Documents\UiPath\PesquisaSatisfacaoFormalistica\excels" sap:VirtualizedContainerService.HintSize="595.2,2944.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+    <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="C:\Users\andrade_cicero\OneDrive - Sicredi\Documents\UiPath\PesquisaSatisfacaoFormalistica\excels" sap:VirtualizedContainerService.HintSize="1132,3959.2" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
       <ui:ForEachFileX.Body>
         <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
           <ActivityAction.Argument1>
@@ -107,7 +118,7 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="561.6,2680" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1098.4,3694.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="tst" />
               <Variable x:TypeArguments="sd:DataTable" Name="dt_dados" />
@@ -117,14 +128,14 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ReadRange AddHeaders="True" DataTable="[dt_infos]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="499.2,97.6" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Processos" WorkbookPath="[currentfile.fullname]">
+            <ui:ReadRange AddHeaders="True" DataTable="[dt_infos]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="1036,97.6" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Processos" WorkbookPath="[currentfile.fullname]">
               <ui:ReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ReadRange.Range>
             </ui:ReadRange>
-            <Assign sap:VirtualizedContainerService.HintSize="499.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign sap:VirtualizedContainerService.HintSize="1036,69.6" sap2010:WorkflowViewState.IdRef="Assign_9">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[dt_Infos.Columns(0).ColumnName]</OutArgument>
               </Assign.To>
@@ -132,7 +143,7 @@
                 <InArgument x:TypeArguments="x:String" xml:space="preserve">Número do  Processo</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="499.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign sap:VirtualizedContainerService.HintSize="1036,69.6" sap2010:WorkflowViewState.IdRef="Assign_10">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[dt_Infos.Columns(1).ColumnName]</OutArgument>
               </Assign.To>
@@ -140,7 +151,7 @@
                 <InArgument x:TypeArguments="x:String" xml:space="preserve"> Usuário da Solicitação</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="499.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign sap:VirtualizedContainerService.HintSize="1036,69.6" sap2010:WorkflowViewState.IdRef="Assign_11">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[dt_Infos.Columns(2).ColumnName]</OutArgument>
               </Assign.To>
@@ -148,7 +159,7 @@
                 <InArgument x:TypeArguments="x:String">Processo</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="499.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign sap:VirtualizedContainerService.HintSize="1036,69.6" sap2010:WorkflowViewState.IdRef="Assign_12">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[dt_Infos.Columns(3).ColumnName]</OutArgument>
               </Assign.To>
@@ -156,7 +167,7 @@
                 <InArgument x:TypeArguments="x:String">CPF/CNPJ</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="499.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign sap:VirtualizedContainerService.HintSize="1036,69.6" sap2010:WorkflowViewState.IdRef="Assign_13">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[dt_Infos.Columns(4).ColumnName]</OutArgument>
               </Assign.To>
@@ -164,7 +175,7 @@
                 <InArgument x:TypeArguments="x:String">Consorciado</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="499.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_15">
+            <Assign sap:VirtualizedContainerService.HintSize="1036,69.6" sap2010:WorkflowViewState.IdRef="Assign_15">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[dt_Infos.Columns(5).ColumnName]</OutArgument>
               </Assign.To>
@@ -172,7 +183,7 @@
                 <InArgument x:TypeArguments="x:String">Grupo / Cota</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="499.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_14">
+            <Assign sap:VirtualizedContainerService.HintSize="1036,69.6" sap2010:WorkflowViewState.IdRef="Assign_14">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[dt_Infos.Columns(6).ColumnName]</OutArgument>
               </Assign.To>
@@ -180,10 +191,63 @@
                 <InArgument x:TypeArguments="x:String">Situação</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:OutputDataTable DataTable="[dt_Infos]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="499.2,90.4" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[tst]" />
-            <ui:GenerateDataTable ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" CSVParsing="True" ColumnSeparators="," DataTable="[dt_dados]" DisplayName="Generate Data Table" sap:VirtualizedContainerService.HintSize="499.2,212.8" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[tst]" />
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="499.2,102.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Recolhendo informações do excel&quot;]" />
-            <Assign sap:VirtualizedContainerService.HintSize="499.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <ui:OutputDataTable DataTable="[dt_Infos]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="1036,90.4" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[tst]" />
+            <ui:GenerateDataTable ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" CSVParsing="True" ColumnSeparators="," DataTable="[dt_dados]" DisplayName="Generate Data Table" sap:VirtualizedContainerService.HintSize="1036,212.8" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[tst]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1036,102.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Recolhendo informações do excel&quot;]" />
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_dados]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1036,682.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="756,556.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[Row(2).ToString=&quot; 258- AQUISIÇÃO E REEMBOLSO-MÓVEL COM REGISTRO&quot;]" sap:VirtualizedContainerService.HintSize="693.6,433.6" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="324.8,264.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262.4,69.6" sap2010:WorkflowViewState.IdRef="Assign_16">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[MovelComRegistro]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:Break sap:VirtualizedContainerService.HintSize="262.4,32" sap2010:WorkflowViewState.IdRef="Break_1" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="324.8,192.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262.4,69.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[MovelComRegistro]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <Assign sap:VirtualizedContainerService.HintSize="1036,69.6" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[Usuario]</OutArgument>
               </Assign.To>
@@ -191,22 +255,57 @@
                 <InArgument x:TypeArguments="x:String">[dt_Infos.Rows(0)(1).ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="499.2,162.4" HtmlContent="[BodyEmail]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_1">
-              <umab:CreateHtmlContent.HtmlContentArg>
-                <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
-                  <umabh:HtmlContentArgument.RuntimeImages>
-                    <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                  </umabh:HtmlContentArgument.RuntimeImages>
-                  <umabh:HtmlContentArgument.ValueMappings>
-                    <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
-                      <umabh:HtmlTextValueMapping Name="Usuario" Value="[Usuario]" />
-                      <umabh:HtmlTableValueMapping Name="dt_dados" Value="[dt_dados]" />
-                    </scg:List>
-                  </umabh:HtmlContentArgument.ValueMappings>
-                </umabh:HtmlContentArgument>
-              </umab:CreateHtmlContent.HtmlContentArg>
-            </umab:CreateHtmlContent>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="499.2,684" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <If Condition="[MovelComRegistro=True]" sap:VirtualizedContainerService.HintSize="1036,454.4" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="496,285.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="433.6,162.4" HtmlContent="[BodyEmail]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_2">
+                    <umab:CreateHtmlContent.HtmlContentArg>
+                      <umabh:HtmlContentArgument FilePath=".data/HtmlContent1.html">
+                        <umabh:HtmlContentArgument.RuntimeImages>
+                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                        </umabh:HtmlContentArgument.RuntimeImages>
+                        <umabh:HtmlContentArgument.ValueMappings>
+                          <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                            <umabh:HtmlTextValueMapping Name="Usuario" Value="[Usuario]" />
+                            <umabh:HtmlTableValueMapping Name="dt_dados" Value="[dt_dados]" />
+                          </scg:List>
+                        </umabh:HtmlContentArgument.ValueMappings>
+                      </umabh:HtmlContentArgument>
+                    </umab:CreateHtmlContent.HtmlContentArg>
+                  </umab:CreateHtmlContent>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="496,285.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="433.6,162.4" HtmlContent="[BodyEmail]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_1">
+                    <umab:CreateHtmlContent.HtmlContentArg>
+                      <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
+                        <umabh:HtmlContentArgument.RuntimeImages>
+                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                        </umabh:HtmlContentArgument.RuntimeImages>
+                        <umabh:HtmlContentArgument.ValueMappings>
+                          <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                            <umabh:HtmlTextValueMapping Name="Usuario" Value="[Usuario]" />
+                            <umabh:HtmlTableValueMapping Name="dt_dados" Value="[dt_dados]" />
+                          </scg:List>
+                        </umabh:HtmlContentArgument.ValueMappings>
+                      </umabh:HtmlContentArgument>
+                    </umab:CreateHtmlContent.HtmlContentArg>
+                  </umab:CreateHtmlContent>
+                </Sequence>
+              </If.Else>
+            </If>
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1036,684" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Try>
                 <Sequence sap:VirtualizedContainerService.HintSize="462.4,443.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
@@ -309,7 +408,7 @@
                 </Catch>
               </TryCatch.Catches>
             </TryCatch>
-            <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="499.2,90.4" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[CurrentFile.FullName]" />
+            <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="1036,90.4" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[CurrentFile.FullName]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEachFileX.Body>
